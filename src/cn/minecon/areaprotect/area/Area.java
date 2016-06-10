@@ -210,11 +210,11 @@ public abstract class Area extends AreaRange {
      * 从目标领地复制权限设置
      */
     public void copyFlags(Area mirror) {
-    	areaFlags = new HashMap<Flag, Boolean>(mirror.getAreaFlags());
-        playerFlags = new HashMap<OfflinePlayer, Map<Flag, Boolean>>();
+    	areaFlags = new HashMap<>(mirror.getAreaFlags());
+        playerFlags = new HashMap<>();
         final Map<OfflinePlayer, Map<Flag, Boolean>> flags = mirror.getPlayerFlags();
         for (OfflinePlayer player : flags.keySet()) {
-            playerFlags.put(player, new HashMap<Flag, Boolean>(flags.get(player)));
+            playerFlags.put(player, new HashMap<>(flags.get(player)));
         }
         AreaProtect.getInstance().getServer().getPluginManager().callEvent(new AreaFlagsChangedEvent(this));
     }
@@ -247,7 +247,7 @@ public abstract class Area extends AreaRange {
     public void setPlayerFlag(OfflinePlayer player, Flag flag, boolean value) {
     	Map<Flag, Boolean> flags = playerFlags.get(player);
         if (flags == null) {
-            flags = new HashMap<Flag, Boolean>();
+            flags = new HashMap<>();
             playerFlags.put(player, flags);
         }
         flags.put(flag, value);

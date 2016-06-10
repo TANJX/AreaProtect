@@ -17,7 +17,7 @@ public class AreaProtectCommand implements CommandExecutor {
 	private final List<CommandSub> commands;
 	
 	public AreaProtectCommand(AreaProtect plugin) {
-		commands = new ArrayList<CommandSub>();
+		commands = new ArrayList<>();
 		registerSubCommand(new AdminCommand(plugin));
 		registerSubCommand(new SelectCommand(plugin));
 		registerSubCommand(new CreateCommand(plugin));

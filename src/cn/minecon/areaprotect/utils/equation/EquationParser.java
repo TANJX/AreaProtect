@@ -6,8 +6,8 @@ import java.util.Map;
 
 public abstract class EquationParser {
     public static Equation parse(String string) {
-        LinkedList<String> stack = new LinkedList<String>();
-        LinkedList<Equation> output = new LinkedList<Equation>();
+        LinkedList<String> stack = new LinkedList<>();
+        LinkedList<Equation> output = new LinkedList<>();
         StringBuilder tokenBuilder = new StringBuilder();
         for (char c : string.toCharArray()) {
             if (c == ' ') {
@@ -208,7 +208,7 @@ public abstract class EquationParser {
         test = parse(test2);
         System.out.println(test.toString());
         System.out.println(test.calculate(null));
-        Map<String, Double> vars = new HashMap<String, Double>();
+        Map<String, Double> vars = new HashMap<>();
         vars.put("X", 12D);
         String test3 = "1 + sin(X) + ln(4/2)";
         test = parse(test3);

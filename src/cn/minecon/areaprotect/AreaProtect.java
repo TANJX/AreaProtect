@@ -48,7 +48,7 @@ public class AreaProtect extends JavaPlugin {
 	
 	@Override
     public void onEnable() {
-		adminPlayers = new HashSet<UUID>();
+		adminPlayers = new HashSet<>();
 		selectionManager = new SelectionManager(this);
 		
 		final PluginManager pluginManager = getServer().getPluginManager();

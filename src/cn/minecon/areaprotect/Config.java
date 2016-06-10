@@ -114,7 +114,7 @@ public class Config {
 	
 	public synchronized static Map<Flag, Boolean> getDefaultAreaFlags() {
 		if (defaultAreaFlags == null) {
-			defaultAreaFlags = new HashMap<Flag, Boolean>();
+			defaultAreaFlags = new HashMap<>();
 			final ConfigurationSection flags = config.getConfigurationSection("DefaultAreaFlags");
 	        for (String key : flags.getKeys(false)) {
 	        	final Flag flag = FlagManager.getFlag(key);

@@ -74,7 +74,7 @@ public class AreaRangeSee implements Runnable {
 		if (player == null) throw new NullPointerException("player");
 		
 		// Create Ret
-		List<Location> ret = new ArrayList<Location>();
+		List<Location> ret = new ArrayList<>();
 		
 		final Location location = player.getLocation();
 		final World world = location.getWorld();

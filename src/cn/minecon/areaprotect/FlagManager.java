@@ -121,7 +121,7 @@ public class FlagManager {
      * Generally should not be called for any reason.
      */
     public static void initFlags() {
-        validFlags = new HashMap<String, Flag>();
+        validFlags = new HashMap<>();
         addFlag(FIRESPREAD);
         addFlag(ENDERMANPICKUP);
         addFlag(PISTON);

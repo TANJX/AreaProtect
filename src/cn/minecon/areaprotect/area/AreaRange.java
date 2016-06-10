@@ -51,26 +51,17 @@ public class AreaRange {
      * 检测给定的选区是否包含在当前选区内
      */
     public boolean isAreaWithin(AreaRange area) {
-        if (!area.getWorld().equals(world)) {
-            return false;
-        }
-        return (containsLocation(area.getHighX(), area.getHighZ()) && containsLocation(area.getLowX(), area.getLowZ()));
+        return area.getWorld().equals(world) && (containsLocation(area.getHighX(), area.getHighZ()) && containsLocation(area.getLowX(), area.getLowZ()));
     }
     
     /**
      * 检测选区是否与当前选区冲撞
      */
     public boolean checkCollision(AreaRange area) {
-    	if (!area.getWorld().equals(world)) {
+        if (!area.getWorld().equals(world)) {
             return false;
         }
-        if (area.containsLocation(world, highX, highZ) ||
-        	area.containsLocation(world, lowX, lowZ) ||
-        	containsLocation(area.getHighX(), area.getHighZ()) ||
-        	containsLocation(area.getLowX(), area.getLowZ())) {
-            return true;
-        }
-        return advCuboidCheckCollision(area);
+        return area.containsLocation(world, highX, highZ) || area.containsLocation(world, lowX, lowZ) || containsLocation(area.getHighX(), area.getHighZ()) || containsLocation(area.getLowX(), area.getLowZ()) || advCuboidCheckCollision(area);
     }
 
     private boolean advCuboidCheckCollision(AreaRange area) {
@@ -92,20 +83,14 @@ public class AreaRange {
 	 * 检测给定的 Location 是否属于区域内
 	 */
 	public boolean containsLocation(Location loc) {
-		if (loc == null) {
-            return false;
-        }
-        return containsLocation(loc.getWorld(), loc.getBlockX(), loc.getBlockZ());
-	}
+        return loc != null && containsLocation(loc.getWorld(), loc.getBlockX(), loc.getBlockZ());
+    }
     
     /**
 	 * 检测给定的坐标是否属于区域内
 	 */
     public boolean containsLocation(World world, int x, int z) {
-        if (!world.equals(this.world)) {
-            return false;
-        }
-        return containsLocation(x, z);
+        return world.equals(this.world) && containsLocation(x, z);
     }
     
     private boolean containsLocation(int x, int z) {
@@ -165,7 +150,7 @@ public class AreaRange {
      * 取得区域的所有变量值, 主要用于价格公式计算
      */
     public Map<String, Double> getVariables() {
-    	final Map<String, Double> variables = new HashMap<String, Double>();
+    	final Map<String, Double> variables = new HashMap<>();
         variables.put("XSize", (double) getXSize());
         variables.put("ZSize", (double) getZSize());
         return variables;

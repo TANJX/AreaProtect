@@ -39,11 +39,11 @@ public class YAMLArea extends Area {
 		this.uuid = UUID.randomUUID();
 		this.owner = player;
 		this.creationDate = System.currentTimeMillis();
-		this.areaFlags = new HashMap<Flag, Boolean>();
+		this.areaFlags = new HashMap<>();
 		for (Entry<Flag, Boolean> flag : Config.getDefaultAreaFlags().entrySet()) {
 			this.areaFlags.put(flag.getKey(), flag.getValue());
         }
-		this.playerFlags = new HashMap<OfflinePlayer, Map<Flag, Boolean>>();
+		this.playerFlags = new HashMap<>();
 	}
 	
 	private OfflinePlayer loadOwner(ConfigurationSection section) {
@@ -63,7 +63,7 @@ public class YAMLArea extends Area {
 	}
 	
 	private Map<Flag, Boolean> getFlags(ConfigurationSection section) {
-		final Map<Flag, Boolean> flags = new HashMap<Flag, Boolean>();
+		final Map<Flag, Boolean> flags = new HashMap<>();
 		if (section != null) {
 			for (String flagKey : section.getKeys(false)) {
 				final Flag flag = FlagManager.getFlag(flagKey);
@@ -77,7 +77,7 @@ public class YAMLArea extends Area {
 	}
 	
 	private void loadPlayerFlags(ConfigurationSection section) {
-		playerFlags = new HashMap<OfflinePlayer, Map<Flag, Boolean>>();
+		playerFlags = new HashMap<>();
 		if (section != null) {
 			for (String key : section.getKeys(false)) {
 				final OfflinePlayer player = AreaProtect.getInstance().getServer().getOfflinePlayer(UUID.fromString(key));

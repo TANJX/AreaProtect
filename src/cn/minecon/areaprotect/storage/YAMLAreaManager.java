@@ -30,7 +30,7 @@ public class YAMLAreaManager implements AreaManager {
 	final private File saveFolder;
 	
 	public YAMLAreaManager(File dataFolder) throws Exception {
-		areasByName = new HashMap<String, Area>();
+		areasByName = new HashMap<>();
 		
 		// 区域数据保存文件夹
 		saveFolder = new File(dataFolder, "save");
@@ -72,7 +72,7 @@ public class YAMLAreaManager implements AreaManager {
 	
 	@Override
 	public List<Area> getAll() {
-		return new ArrayList<Area>(areasByName.values());
+		return new ArrayList<>(areasByName.values());
 	}
 	
 	@Override
@@ -82,7 +82,7 @@ public class YAMLAreaManager implements AreaManager {
 	
 	@Override
 	public List<Area> getByWorld(World world) {
-		final List<Area> areas = new ArrayList<Area>();
+		final List<Area> areas = new ArrayList<>();
 		for (Area area : areasByName.values()) {
 			if (area.getWorld().equals(world)) {
 				areas.add(area);
@@ -93,7 +93,7 @@ public class YAMLAreaManager implements AreaManager {
 	
 	@Override
 	public List<Area> getByPlayer(OfflinePlayer player) {
-		final List<Area> areas = new ArrayList<Area>();
+		final List<Area> areas = new ArrayList<>();
 		for (Area area : areasByName.values()) {
 			if (area.isOwner(player)) {
 				areas.add(area);

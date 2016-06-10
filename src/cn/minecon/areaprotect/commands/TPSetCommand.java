@@ -30,7 +30,7 @@ public class TPSetCommand extends CommandSub {
 		if (area.getTeleportLocation() == null && !plugin.isAdminMode(player) && plugin.isEconomy()) {
 			if (Config.getTeleportEnableCost() > 0) {
 				if (confirm == null) {
-					confirm = new HashMap<UUID, UUID>();
+					confirm = new HashMap<>();
 				}
 				
 				final Economy eco = plugin.getEconomy();

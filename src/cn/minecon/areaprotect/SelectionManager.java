@@ -20,9 +20,9 @@ public class SelectionManager {
     
     public SelectionManager(AreaProtect plugin) {
     	this.plugin = plugin;
-    	playerPrimaryLocs = new HashMap<UUID, Location>();
-    	playerSecondaryLocs = new HashMap<UUID, Location>();
-    	playerRangeSeeTasks = new HashMap<UUID, AreaRangeSee>();
+    	playerPrimaryLocs = new HashMap<>();
+    	playerSecondaryLocs = new HashMap<>();
+    	playerRangeSeeTasks = new HashMap<>();
     }
 
     public void placePrimaryLoc(Player player, Location loc) {
