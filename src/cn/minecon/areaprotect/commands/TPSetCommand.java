@@ -42,17 +42,17 @@ public class TPSetCommand extends CommandSub {
 					return true;
 				}
 				
-				if (!eco.has(player, Config.getTeleportEnableCost())) {
-					alert(Config.getMessage("TPSet.NotEnoughMoney", eco.format(Config.getTeleportEnableCost()), eco.format(eco.getBalance(player))));
+				if (!eco.has(player.getName(), Config.getTeleportEnableCost())) {
+					alert(Config.getMessage("TPSet.NotEnoughMoney", eco.format(Config.getTeleportEnableCost()), eco.format(eco.getBalance(player.getName()))));
 				}
 				
 				confirm.remove(player.getUniqueId());
 				
-				final EconomyResponse ecoResp = eco.withdrawPlayer(player, Config.getTeleportEnableCost());
+				final EconomyResponse ecoResp = eco.withdrawPlayer(player.getName(), Config.getTeleportEnableCost());
 				if (!ecoResp.transactionSuccess()) {
 					alert(ecoResp.errorMessage);
 				}
-				player.sendMessage(Config.getMessage("TPSet.Expense", eco.format(Config.getTeleportEnableCost()), eco.format(eco.getBalance(player))));
+				player.sendMessage(Config.getMessage("TPSet.Expense", eco.format(Config.getTeleportEnableCost()), eco.format(eco.getBalance(player.getName()))));
 			}
 		}
 		

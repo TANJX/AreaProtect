@@ -54,14 +54,14 @@ public class CreateCommand extends CommandSub {
 			if (!plugin.isAdminMode(player) && plugin.isEconomy()) {
 				final Economy eco = plugin.getEconomy();
 				final double charge = Config.getCostEquation().calculate(areaRange.getVariables());
-				if (!eco.has(player, charge)) {
-					alert(Config.getMessage("Create.NotEnoughMoney", eco.format(charge), eco.format(eco.getBalance(player))));
+				if (!eco.has(player.getName(), charge)) {
+					alert(Config.getMessage("Create.NotEnoughMoney", eco.format(charge), eco.format(eco.getBalance(player.getName()))));
 				}
-				final EconomyResponse ecoResp = eco.withdrawPlayer(player, charge);
+				final EconomyResponse ecoResp = eco.withdrawPlayer(player.getName(), charge);
 				if (!ecoResp.transactionSuccess()) {
 					alert(ecoResp.errorMessage);
 				}
-				player.sendMessage(Config.getMessage("Create.Expense", eco.format(charge), eco.format(eco.getBalance(player))));
+				player.sendMessage(Config.getMessage("Create.Expense", eco.format(charge), eco.format(eco.getBalance(player.getName()))));
 			}
 			
 			// 创建区域
