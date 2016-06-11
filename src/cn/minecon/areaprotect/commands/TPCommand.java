@@ -30,7 +30,6 @@ public class TPCommand extends CommandSub {
 
             final String completeMessage = Config.getMessage("TPComplete", area.getName());
             if (loc == null) {
-                alert(Config.getMessage("AreaNotSetTPLocation", area.getName()));
                 Location temp = new Location(area.getWorld(), (area.getHighX() + area.getLowX()) / 2,
                         64, (area.getHighZ() + area.getLowZ()) / 2);
                 try {
@@ -38,7 +37,8 @@ public class TPCommand extends CommandSub {
                 } catch (Exception ignored) {
                 }
                 player.teleport(temp, TeleportCause.COMMAND);
-                player.sendMessage(completeMessage + ", 请立即设置传送点");
+                player.sendMessage(completeMessage + "§c, 请输入 §l§2/a tpset §r§c设置该领地的传送点");
+                alert(Config.getMessage("AreaNotSetTPLocation", area.getName()));
             }
 
             if (Config.getTeleportDelay() > 0 && !AreaProtect.getInstance().isAdminMode(player)) {
